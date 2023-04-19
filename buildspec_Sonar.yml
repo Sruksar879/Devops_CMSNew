@@ -20,9 +20,9 @@ phases:
   build:
     commands:
       - echo "sonar.coverage.exclusions=**/*.py" >> sonar-project.properties
-      - sonar-scanner -Dsonar.login=9645ed796b4a9db7831d24f1c1751fe0d13d196d -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=ruksar22174711 -Dsonar.organization=ruksar22174711 
+      - sonar-scanner -Dsonar.login=2a148758e38b7fe41ee46e533a45b5c025240bc9 -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=ruksar_cms -Dsonar.organization=ruksar_cms 
       - sleep 5
-      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=ruksar22174711 >result.json
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=ruksar_cms >result.json
       - cat result.json
       - if ! command -v jq >/dev/null 2>&1; then echo "jq not found"; exit 1; fi
       - if [ $(jq -r'.projectStatus.status' result.json) = "ERROR" ]; then $CODEBUILD_BUILD_SUCCEEDING -eq 0; fi
